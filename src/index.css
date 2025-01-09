@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+}
+
+ol,ul,a,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: currentColor;
+}
+.page-header{
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: #fff;
+    margin-bottom: 3rem;
+}
+.page-footer{
+    background-color: #333;
+    display: flex;
+    margin-top: 30px;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.active-link{
+    color: lime;
+}
