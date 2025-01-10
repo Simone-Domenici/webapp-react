@@ -5,7 +5,7 @@ import Header from './Header';
 function DefaultLayout() {
   return <>
     <Header />
-    <main>
+    <main className='flex-grow-1'>
       <Outlet />
     </main>
     <Footer />

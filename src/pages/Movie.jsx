@@ -6,6 +6,8 @@ export default function Movie() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(true);
+    
+
 
     useEffect(() => {
         axios.get(`http://localhost:3000/api/movies/${id}`)
@@ -27,13 +29,46 @@ export default function Movie() {
         return <p>Film non trovato</p>;
     }
 
+    const movieImage = "http://localhost:3000/movies_cover/"+movie.image
+
+    const reviews = movie.reviews || [];
+    const averageVote = reviews.length > 0
+        ? (reviews.reduce((sum, review) => sum + review.vote, 0) / reviews.length).toFixed(1)
+        : 'N/A';
+
     return (
-        <div className='container'>
-            <h1 className='display-4 my-4'>{movie.title}</h1>
-            <p>{movie.director}</p>
-            <p>{movie.genre}</p>
+        <>
+        <div className='container d-flex flex-grow-1'>
+            <div className="image-container">
+                <img src={movieImage} className="img-fluid"/>
+            </div>
+            <div className="ms-4">
+            <h1 className='display-4'>{movie.title}</h1>
+            <p className="fst-italic">{movie.director}</p>
+            <p className="fw-semibold">{movie.genre}</p>
             <p>{movie.abstract}</p>
-            <p>{movie.release_year}</p>
+            <p className="fw-semibold">{movie.release_year}</p>
+            </div>
         </div>
+        <div className="container ">
+            <h2 className='my-4'>Recensioni</h2>
+                {reviews.length > 0 ? (
+                    <div>
+                        {reviews.map((review, i) => (
+                            <div key={i} className='card mb-3'>
+                                <div className='card-body'>
+                                    <h5 className='card-title'>{review.name}</h5>
+                                    <h6 className='card-subtitle mb-2 text-muted'>Voto: {review.vote}</h6>
+                                    <p className='card-text'>{review.text}</p>
+                                </div>
+                            </div>
+                        ))}
+                        <h3 className='my-4'>Media: {averageVote}</h3>
+                    </div>
+                ) : (
+                    <p>Nessuna recensione disponibile</p>
+                )}
+        </div>
+        </>
     );
 }

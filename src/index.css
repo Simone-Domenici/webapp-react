@@ -35,3 +35,8 @@ ol,ul,a,li{
 .active-link{
     color: lime;
 }
+
+.image-container{
+    width: 200px;
+    height: 300px;
+}
