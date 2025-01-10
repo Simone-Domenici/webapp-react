@@ -8,18 +8,22 @@ body{
     height: 100vh;
 }
 
-ol,ul,a,li{
+ol,ul,li{
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
     color: currentColor;
 }
+
+a{
+    text-decoration: none;
+    color: currentColor;
+}
 .page-header{
-    background-color: #333;
+    background-color: rgb(107, 226, 226);
     display: flex;
     justify-content: space-between;
-    padding: 10px;
     color: #fff;
     margin-bottom: 3rem;
 }
@@ -33,10 +37,18 @@ ol,ul,a,li{
 }
 
 .active-link{
-    color: lime;
+    color: orangered;
 }
 
 .image-container{
     width: 200px;
     height: 300px;
+}
+
+.star-size{
+    width: 30px;
+}
+
+.logo{
+    height: 150px
 }

@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import StarRating from '../components/StarRating';
+
 
 export default function Movie() {
     const { id } = useParams();
@@ -51,19 +53,24 @@ export default function Movie() {
             </div>
         </div>
         <div className="container ">
-            <h2 className='my-4'>Recensioni</h2>
+            <div className="d-flex justify-content-between">
+                <h2 className='my-4'>Recensioni</h2>
+                <h3 className='my-4'>Media: <StarRating rating={averageVote}/> </h3>
+            </div>
                 {reviews.length > 0 ? (
                     <div>
                         {reviews.map((review, i) => (
                             <div key={i} className='card mb-3'>
                                 <div className='card-body'>
                                     <h5 className='card-title'>{review.name}</h5>
-                                    <h6 className='card-subtitle mb-2 text-muted'>Voto: {review.vote}</h6>
+                                    <div className="d-flex align-items-center gap-2">
+                                        <h6 className='card-subtitle text-muted'>Voto: </h6>
+                                        <StarRating rating={review.vote} />
+                                    </div>
                                     <p className='card-text'>{review.text}</p>
                                 </div>
                             </div>
                         ))}
-                        <h3 className='my-4'>Media: {averageVote}</h3>
                     </div>
                 ) : (
                     <p>Nessuna recensione disponibile</p>

@@ -7,7 +7,7 @@ function Nav() {
   ]
 
   return <nav>
-    <ul className='d-flex items-center'>
+    <ul className='d-flex align-items-center me-5 fs-5'>
       {
         menu.map(({path, label}, i) => {
           return <li key={i}>
