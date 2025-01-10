@@ -4,6 +4,7 @@ import DefaultLayout from './layouts/DefaultLayout'
 import Home from './pages/Home'
 import Movie from './pages/Movie'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   

@@ -26,7 +26,9 @@ export default function Home() {
             ) : (
                 <div className='row'>
                     {movies.map((movie) => (
-                        MovieCard(movie)
+                        <div className='col-12 col-md-6 col-lg-4 mb-4' key={movie.id}>
+                            <MovieCard {...movie} />
+                        </div>
                     ))}
                 </div>
             )}
