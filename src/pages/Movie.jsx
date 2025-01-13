@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StarRating from '../components/StarRating';
+import FormReview from "../components/FormReview";
 
 
 export default function Movie() {
@@ -9,9 +10,12 @@ export default function Movie() {
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
-
     useEffect(() => {
+        fetchMovie();
+    }, [id]);
+
+    const fetchMovie = () => {
+        setLoading(true);
         axios.get(`http://localhost:3000/api/movies/${id}`)
             .then(res => {
                 setMovie(res.data);
@@ -21,7 +25,11 @@ export default function Movie() {
                 console.error(err);
                 setLoading(false);
             });
-    }, [id]);
+    };
+
+    const handleReviewAdded = () => {
+        fetchMovie();
+      };
 
     if (loading) {
         return <p>Caricamento...</p>;
@@ -76,6 +84,8 @@ export default function Movie() {
                     <p>Nessuna recensione disponibile</p>
                 )}
             </div>
+
+            <FormReview movieId={id} onReviewAdded={handleReviewAdded} />
         </>
     );
 }
