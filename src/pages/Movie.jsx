@@ -3,12 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StarRating from '../components/StarRating';
 import FormReview from "../components/FormReview";
+import { useContext } from "react";
+import GlobalContext from "../contexts/globalContext";
+import Loader from "../components/Loader";
+
 
 
 export default function Movie() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { loading, setLoading } = useContext(GlobalContext);
 
     useEffect(() => {
         fetchMovie();
@@ -32,7 +36,7 @@ export default function Movie() {
       };
 
     if (loading) {
-        return <p>Caricamento...</p>;
+        return <Loader />
     }
 
     if (!movie) {

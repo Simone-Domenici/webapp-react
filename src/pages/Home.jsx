@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { useContext } from "react";
+import GlobalContext from "../contexts/globalContext";
+import Loader from "../components/Loader";
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
+    const { loading, setLoading } = useContext(GlobalContext);
 
 
     useEffect(() => {
@@ -35,7 +38,7 @@ export default function Home() {
                 onChange={e => setSearch(e.target.value)}
             />
             {loading ? (
-                <p>Caricamento...</p>
+                <Loader />
             ) : (
                 <div className='row'>
                     {filteredMovies.map((movie) => (

@@ -34,7 +34,7 @@ function MovieCard(movie) {
         <Card.Text>
           <StarRating rating={averageVote} />
         </Card.Text>
-        <Link to={`/${movie.id}`}><Button variant="primary">See More</Button></Link>
+        <Link to={`/movies/${movie.id}`}><Button variant="primary">See More</Button></Link>
       </Card.Body>
     </Card>
   );
